@@ -1,0 +1,137 @@
+{
+  "baseline_oof_auc": 0.9467890215342956,
+  "params": {
+    "objective": "binary",
+    "metric": "auc",
+    "learning_rate": 0.05,
+    "num_leaves": 24,
+    "min_child_samples": 500,
+    "colsample_bytree": 0.5,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "reg_lambda": 10.0,
+    "n_estimators": 3000,
+    "n_jobs": -1,
+    "verbosity": -1,
+    "seed": 42
+  },
+  "seed": 42,
+  "results": [
+    {
+      "name": "baseline_orig",
+      "n_feat": 24,
+      "oof_auc": 0.9467890215342956,
+      "fold_auc": [
+        0.9450589538098313,
+        0.9484499065689089,
+        0.951355096647459,
+        0.947212524259166,
+        0.9420766293660269
+      ],
+      "best_iters": [
+        547,
+        453,
+        480,
+        395,
+        417
+      ]
+    },
+    {
+      "name": "B1_ratio",
+      "features": [
+        "amt_bal_ratio",
+        "is_overdraft",
+        "amt_risk",
+        "amt_velocity",
+        "balance_after"
+      ],
+      "n_feat": 29,
+      "oof_auc": 0.9465019651428244,
+      "fold_auc": [
+        0.9451180430720593,
+        0.9485088933072461,
+        0.9511874859423329,
+        0.9465652019780616,
+        0.9413851664609856
+      ],
+      "best_iters": [
+        572,
+        495,
+        504,
+        287,
+        406
+      ]
+    },
+    {
+      "name": "B2_flags",
+      "features": [
+        "risk_flag_sum",
+        "mismatch_sum",
+        "cvv_x_flags",
+        "risk_x_velocity"
+      ],
+      "n_feat": 28,
+      "oof_auc": 0.946737940515259,
+      "fold_auc": [
+        0.9453199704998202,
+        0.9488030035957675,
+        0.9508783866090509,
+        0.9470727445809726,
+        0.9419680488997824
+      ],
+      "best_iters": [
+        500,
+        479,
+        348,
+        369,
+        444
+      ]
+    },
+    {
+      "name": "B3_interact",
+      "features": [
+        "dist_x_foreign",
+        "dist_x_vpn",
+        "txn24_x_amt"
+      ],
+      "n_feat": 27,
+      "oof_auc": 0.9467266317841921,
+      "fold_auc": [
+        0.9450403961321261,
+        0.948776775874618,
+        0.951322865851169,
+        0.9472607073265592,
+        0.9416839841298581
+      ],
+      "best_iters": [
+        543,
+        496,
+        426,
+        451,
+        653
+      ]
+    },
+    {
+      "name": "B4_catcombo",
+      "features": [
+        "cat_x_auth"
+      ],
+      "n_feat": 25,
+      "oof_auc": 0.946039341077544,
+      "fold_auc": [
+        0.9443853194345965,
+        0.9481148995541977,
+        0.9504338017227534,
+        0.9461739829383159,
+        0.9414746905815592
+      ],
+      "best_iters": [
+        428,
+        341,
+        405,
+        391,
+        526
+      ]
+    }
+  ]
+}

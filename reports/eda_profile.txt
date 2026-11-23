@@ -1,0 +1,243 @@
+
+======================================================================
+1. 规模与结构
+======================================================================
+train: (699960, 26)   test: (299984, 25)
+train 列数 26, test 列数 25
+特征列一致: True
+
+train 比 test 多的列: ['is_fraud']
+test 比 train 多的列: []
+
+======================================================================
+2. dtypes / 唯一值 / 缺失
+======================================================================
+                                dtype  nunique  null_train  null_test
+account_balance_usd           float64    43317         0.0        0.0
+amount_usd                    float64    13387         0.0        0.0
+auth_method                       str        5         0.0        0.0
+billing_shipping_mismatch        bool        2         0.0        0.0
+card_age_months                 int64       49         0.0        0.0
+card_type                         str        5         0.0        0.0
+channel                           str        5         0.0        0.0
+customer_age                    int64       64         0.0        0.0
+cvv_retry_count                 int64        4         0.0        0.0
+day_of_week                     int64        7         0.0        0.0
+device_type                       str        8         0.0        0.0
+distance_from_home_km         float64     4365         0.0        0.0
+hours_since_last_txn          float64     3633         0.0        0.0
+id                              int64   699960         0.0        0.0
+ip_country_mismatch              bool        2         0.0        0.0
+is_ai_generated_scam_attempt     bool        2         0.0        0.0
+is_foreign_transaction           bool        2         0.0        0.0
+is_fraud                      float64        2         NaN        NaN
+is_new_merchant                  bool        2         0.0        0.0
+merchant_category                 str       12         0.0        0.0
+merchant_risk_score           float64      950         0.0        0.0
+prior_disputes                  int64        5         0.0        0.0
+time_of_day_hour                int64       24         0.0        0.0
+txn_count_last_24h              int64       12         0.0        0.0
+used_vpn                         bool        2         0.0        0.0
+velocity_score                float64      666         0.0        0.0
+
+======================================================================
+3. 目标分布
+======================================================================
+is_fraud
+0.0    688271
+1.0     11689
+
+正类率: 0.016700  (11,689 / 699,960)
+不平衡比: 1 : 59.9
+
+======================================================================
+4. 数值特征
+======================================================================
+                          count      mean       std    min     25%      50%      75%       max    skew  nunique
+amount_usd             699960.0    79.893   205.174   1.00   15.81    27.25    43.11   6872.69   7.002    13387
+hours_since_last_txn   699960.0     6.634     6.290   0.01    2.11     4.73     9.19     51.98   1.823     3633
+txn_count_last_24h     699960.0     2.984     1.499   0.00    2.00     3.00     4.00     11.00   0.436       12
+distance_from_home_km  699960.0    13.588    11.617   0.00    4.43    10.22    19.75     57.93   1.060     4365
+card_age_months        699960.0    46.863     5.579  25.00   43.00    47.00    51.00     73.00   0.133       49
+customer_age           699960.0    51.430    17.899  18.00   38.00    52.00    66.00     81.00  -0.141       64
+account_balance_usd    699960.0  2064.998  3400.133  58.25  834.12  1382.74  2517.02  99701.39  14.436    43317
+cvv_retry_count        699960.0     0.085     0.290   0.00    0.00     0.00     0.00      3.00   3.319        4
+velocity_score         699960.0    18.929    10.864   0.00   11.40    18.60    26.00     72.90   0.260      666
+time_of_day_hour       699960.0    11.762     6.869   0.00    6.00    12.00    18.00     23.00  -0.056       24
+day_of_week            699960.0     2.982     2.002   0.00    1.00     3.00     5.00      6.00   0.018        7
+merchant_risk_score    699960.0    35.218    12.628   0.00   26.40    34.20    42.70    100.00   0.620      950
+prior_disputes         699960.0     0.153     0.381   0.00    0.00     0.00     0.00      4.00   2.377        5
+
+======================================================================
+5. 类别特征
+======================================================================
+
+[merchant_category] 基数=12  类型=str
+merchant_category
+Online Retail      155097
+Groceries          142578
+Restaurants        101360
+Fuel                59880
+Electronics         48693
+Streaming           47196
+Utilities           42027
+Healthcare          35889
+Travel              28715
+Gaming              23784
+Gift Cards           9456
+Crypto Exchange      5285
+  目标率: {'Crypto Exchange': 0.06528, 'Electronics': 0.03083, 'Fuel': 0.01237, 'Gaming': 0.05512, 'Gift Cards': 0.07297, 'Groceries': 0.01112, 'Healthcare': 0.01287, 'Online Retail': 0.01108, 'Restaurants': 0.01143, 'Streaming': 0.02248, 'Travel': 0.0186, 'Utilities': 0.01382}
+
+[card_type] 基数=5  类型=str
+card_type
+Visa          345001
+Mastercard    254857
+Amex           45797
+RuPay          37070
+Discover       17235
+  目标率: {'Amex': 0.01902, 'Discover': 0.01456, 'Mastercard': 0.01602, 'RuPay': 0.01681, 'Visa': 0.01699}
+
+[auth_method] 基数=5  类型=str
+auth_method
+3D Secure            210036
+OTP                  175178
+PIN                  154020
+Biometric             93666
+No Authentication     67060
+  目标率: {'3D Secure': 0.01475, 'Biometric': 0.005, 'No Authentication': 0.06445, 'OTP': 0.01407, 'PIN': 0.00868}
+
+[channel] 基数=5  类型=str
+channel
+Online         273939
+POS            206465
+Contactless    105620
+In-App          83716
+ATM             30220
+  目标率: {'ATM': 0.01588, 'Contactless': 0.01554, 'In-App': 0.01633, 'Online': 0.01742, 'POS': 0.0166}
+
+[device_type] 基数=8  类型=str
+device_type
+Android Phone    237454
+iPhone           164691
+POS Terminal     113237
+Windows PC        80934
+Mac               33973
+Tablet            27688
+Smart Watch       21106
+ATM Machine       20877
+  目标率: {'ATM Machine': 0.01696, 'Android Phone': 0.0161, 'Mac': 0.0171, 'POS Terminal': 0.01729, 'Smart Watch': 0.01701, 'Tablet': 0.01701, 'Windows PC': 0.01614, 'iPhone': 0.01722}
+
+布尔列（True/False）检测:
+
+======================================================================
+6. train/test 分布对比
+======================================================================
+                         col  train_mean  test_mean     smd
+                 day_of_week     2.98173    2.97134 0.00520
+                    used_vpn     0.03381    0.03297 0.00468
+             card_age_months    46.86298   46.84075 0.00398
+              prior_disputes     0.15277    0.15392 0.00302
+is_ai_generated_scam_attempt     0.00328    0.00343 0.00252
+            time_of_day_hour    11.76191   11.74694 0.00218
+         account_balance_usd  2064.99807 2071.46800 0.00189
+   billing_shipping_mismatch     0.01294    0.01309 0.00134
+       distance_from_home_km    13.58758   13.60289 0.00132
+        hours_since_last_txn     6.63373    6.64032 0.00105
+             is_new_merchant     0.15247    0.15283 0.00101
+         ip_country_mismatch     0.01616    0.01603 0.00101
+      is_foreign_transaction     0.01728    0.01739 0.00085
+              velocity_score    18.92945   18.93846 0.00083
+             cvv_retry_count     0.08547    0.08537 0.00036
+                customer_age    51.43029   51.42426 0.00034
+          txn_count_last_24h     2.98409    2.98381 0.00019
+                  amount_usd    79.89307   79.92120 0.00014
+         merchant_risk_score    35.21765   35.21738 0.00002
+
+类别特征 TV 距离（总变差，0=完全一致）:
+  merchant_category: 0.00231
+  card_type: 0.00113
+  auth_method: 0.00231
+  channel: 0.00214
+  device_type: 0.00155
+
+======================================================================
+7. 重复 / 泄漏检查
+======================================================================
+train 特征完全重复行: 0
+test  特征完全重复行: 0
+train/test 特征重叠行数: 0
+
+ID 范围: train [0, 699959]  test [699960, 999943]
+ID 是否有交集: 0
+ID 与目标相关性 (point-biserial): -0.000644
+ID 是否连续: True
+
+按 ID 十等分的正类率（看是否有时间漂移）:
+_id_bin
+0    0.01670
+1    0.01587
+2    0.01712
+3    0.01734
+4    0.01713
+5    0.01686
+6    0.01673
+7    0.01626
+8    0.01696
+9    0.01603
+
+======================================================================
+8. 与目标的关系
+======================================================================
+数值特征与目标的相关性:
+cvv_retry_count                 0.2123
+ip_country_mismatch             0.1483
+merchant_risk_score             0.1254
+is_foreign_transaction          0.1128
+velocity_score                  0.1016
+is_new_merchant                 0.1014
+billing_shipping_mismatch       0.1011
+used_vpn                        0.0712
+is_ai_generated_scam_attempt    0.0607
+txn_count_last_24h              0.0580
+customer_age                    0.0561
+prior_disputes                  0.0236
+hours_since_last_txn           -0.0205
+amount_usd                      0.0194
+day_of_week                     0.0037
+distance_from_home_km           0.0018
+account_balance_usd             0.0011
+card_age_months                 0.0007
+time_of_day_hour               -0.0001
+
+数值特征之间的高相关对 (|r| > 0.8):
+  无
+
+======================================================================
+9. 单特征区分力（AUC，粗筛）
+======================================================================
+merchant_risk_score             0.7489
+velocity_score                  0.7108
+cvv_retry_count                 0.7081
+is_new_merchant                 0.6422
+customer_age                    0.6247
+txn_count_last_24h              0.6203
+ip_country_mismatch             0.5730
+hours_since_last_txn            0.5682
+merchant_category               0.5674
+is_foreign_transaction          0.5574
+used_vpn                        0.5502
+amount_usd                      0.5448
+billing_shipping_mismatch       0.5446
+prior_disputes                  0.5322
+auth_method                     0.5280
+is_ai_generated_scam_attempt    0.5136
+day_of_week                     0.5081
+account_balance_usd             0.5063
+device_type                     0.5055
+channel                         0.5053
+distance_from_home_km           0.5039
+card_type                       0.5026
+card_age_months                 0.5019
+time_of_day_hour                0.5002
+
+>>> 已写入 D:\Kaggle\Project\Predicting Credit Card Fraud\reports\eda_profile.json

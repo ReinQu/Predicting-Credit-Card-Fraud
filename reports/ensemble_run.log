@@ -1,0 +1,36 @@
+特征 16 列，折 seed 42，正类 11,689
+
+lgbm42     OOF 0.947179  (94s)
+lgbm7      OOF 0.946936  (94s)
+lgbm2024   OOF 0.946965  (99s)
+xgb        OOF 0.945285  (348s)
+cat        OOF 0.946216  (1558s)
+
+已保存模型: ['lgbm42', 'lgbm7', 'lgbm2024', 'xgb', 'cat']
+
+单模型 / 模型间相关性:
+模型           OOF AUC
+lgbm42      0.947179
+lgbm7       0.946936
+lgbm2024    0.946965
+xgb         0.945285
+cat         0.946216
+
+OOF Spearman 相关性:
+          lgbm42   lgbm7  lgbm2024     xgb     cat
+lgbm42    1.0000  0.9939    0.9942  0.9852  0.9816
+lgbm7     0.9939  1.0000    0.9943  0.9851  0.9818
+lgbm2024  0.9942  0.9943    1.0000  0.9853  0.9820
+xgb       0.9852  0.9851    0.9853  1.0000  0.9822
+cat       0.9816  0.9818    0.9820  0.9822  1.0000
+
+============================================================
+融合方式                         OOF AUC
+============================================================
+等权平均                        0.947350
+Rank 平均                     0.947225
+OOF 优化权重                    0.947412
+
+优化权重: {'lgbm42': np.float64(0.4643), 'lgbm7': np.float64(0.1384), 'lgbm2024': np.float64(0.1801), 'xgb': np.float64(0.0), 'cat': np.float64(0.2172)}
+
+>>> 已写入 D:\Kaggle\Project\Predicting Credit Card Fraud\reports/ensemble.json 与 D:\Kaggle\Project\Predicting Credit Card Fraud\reports\ensemble/

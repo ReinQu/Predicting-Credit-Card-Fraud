@@ -1,0 +1,96 @@
+{
+  "shape": {
+    "train": [
+      699960,
+      26
+    ],
+    "test": [
+      299984,
+      25
+    ]
+  },
+  "null_total": 0.0,
+  "target": {
+    "rate": 0.016699525687182123,
+    "counts": {
+      "0.0": 688271,
+      "1.0": 11689
+    }
+  },
+  "numeric": [
+    "amount_usd",
+    "hours_since_last_txn",
+    "txn_count_last_24h",
+    "distance_from_home_km",
+    "card_age_months",
+    "customer_age",
+    "account_balance_usd",
+    "cvv_retry_count",
+    "velocity_score",
+    "time_of_day_hour",
+    "day_of_week",
+    "merchant_risk_score",
+    "prior_disputes",
+    "is_foreign_transaction",
+    "is_new_merchant",
+    "used_vpn",
+    "ip_country_mismatch",
+    "billing_shipping_mismatch",
+    "is_ai_generated_scam_attempt"
+  ],
+  "categorical": {
+    "merchant_category": 12,
+    "card_type": 5,
+    "auth_method": 5,
+    "channel": 5,
+    "device_type": 8
+  },
+  "drift": {
+    "max_smd": 0.005198838691255957,
+    "max_smd_col": "day_of_week",
+    "tv": {
+      "merchant_category": 0.0023081415019315936,
+      "card_type": 0.0011280886996945638,
+      "auth_method": 0.00231048819927384,
+      "channel": 0.00214270147287067,
+      "device_type": 0.0015489022359075223
+    }
+  },
+  "id_target_corr": -0.0006443353134705121,
+  "top_corr": {
+    "cvv_retry_count": 0.2123,
+    "ip_country_mismatch": 0.1483,
+    "merchant_risk_score": 0.1254,
+    "is_foreign_transaction": 0.1128,
+    "velocity_score": 0.1016,
+    "is_new_merchant": 0.1014,
+    "billing_shipping_mismatch": 0.1011,
+    "used_vpn": 0.0712
+  },
+  "single_feature_auc": {
+    "merchant_risk_score": 0.7489,
+    "velocity_score": 0.7108,
+    "cvv_retry_count": 0.7081,
+    "is_new_merchant": 0.6422,
+    "customer_age": 0.6247,
+    "txn_count_last_24h": 0.6203,
+    "ip_country_mismatch": 0.573,
+    "hours_since_last_txn": 0.5682,
+    "merchant_category": 0.5674,
+    "is_foreign_transaction": 0.5574,
+    "used_vpn": 0.5502,
+    "amount_usd": 0.5448,
+    "billing_shipping_mismatch": 0.5446,
+    "prior_disputes": 0.5322,
+    "auth_method": 0.528,
+    "is_ai_generated_scam_attempt": 0.5136,
+    "day_of_week": 0.5081,
+    "account_balance_usd": 0.5063,
+    "device_type": 0.5055,
+    "channel": 0.5053,
+    "distance_from_home_km": 0.5039,
+    "card_type": 0.5026,
+    "card_age_months": 0.5019,
+    "time_of_day_hour": 0.5002
+  }
+}

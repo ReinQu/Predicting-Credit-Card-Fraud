@@ -1,0 +1,77 @@
+{
+  "features": [
+    "amount_usd",
+    "hours_since_last_txn",
+    "txn_count_last_24h",
+    "customer_age",
+    "cvv_retry_count",
+    "velocity_score",
+    "merchant_risk_score",
+    "prior_disputes",
+    "merchant_category",
+    "auth_method",
+    "is_foreign_transaction",
+    "is_new_merchant",
+    "used_vpn",
+    "ip_country_mismatch",
+    "billing_shipping_mismatch",
+    "is_ai_generated_scam_attempt"
+  ],
+  "fold_seed": 42,
+  "single": {
+    "lgbm42": 0.9471793585190424,
+    "lgbm7": 0.9469356725860045,
+    "lgbm2024": 0.9469653824761687,
+    "xgb": 0.945285326172771,
+    "cat": 0.94621607018927
+  },
+  "spearman": {
+    "lgbm42": {
+      "lgbm42": 1.0,
+      "lgbm7": 0.9939,
+      "lgbm2024": 0.9942,
+      "xgb": 0.9852,
+      "cat": 0.9816
+    },
+    "lgbm7": {
+      "lgbm42": 0.9939,
+      "lgbm7": 1.0,
+      "lgbm2024": 0.9943,
+      "xgb": 0.9851,
+      "cat": 0.9818
+    },
+    "lgbm2024": {
+      "lgbm42": 0.9942,
+      "lgbm7": 0.9943,
+      "lgbm2024": 1.0,
+      "xgb": 0.9853,
+      "cat": 0.982
+    },
+    "xgb": {
+      "lgbm42": 0.9852,
+      "lgbm7": 0.9851,
+      "lgbm2024": 0.9853,
+      "xgb": 1.0,
+      "cat": 0.9822
+    },
+    "cat": {
+      "lgbm42": 0.9816,
+      "lgbm7": 0.9818,
+      "lgbm2024": 0.982,
+      "xgb": 0.9822,
+      "cat": 1.0
+    }
+  },
+  "blend": {
+    "equal": 0.947350462537349,
+    "rank": 0.9472250711816045,
+    "weighted": 0.9474121255186704,
+    "weights": {
+      "lgbm42": 0.4642906510114736,
+      "lgbm7": 0.13835052471118323,
+      "lgbm2024": 0.1801251419708858,
+      "xgb": 0.0,
+      "cat": 0.2172336823064573
+    }
+  }
+}

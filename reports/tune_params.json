@@ -1,0 +1,119 @@
+{
+  "baseline_oof_auc": 0.94565,
+  "seed": 42,
+  "n_splits": 5,
+  "results": [
+    {
+      "name": "A_capacity",
+      "hypothesis": "模型在欠拟合，加大容量能提升",
+      "params": {
+        "objective": "binary",
+        "metric": "auc",
+        "learning_rate": 0.02,
+        "num_leaves": 128,
+        "min_child_samples": 50,
+        "colsample_bytree": 0.8,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "reg_lambda": 1.0,
+        "n_estimators": 8000,
+        "n_jobs": -1,
+        "verbosity": -1,
+        "seed": 42
+      },
+      "early_stopping": 200,
+      "fold_auc": [
+        0.94296261077119,
+        0.9473328623011518,
+        0.9502910422572616,
+        0.9458531726370191,
+        0.9412777325448067
+      ],
+      "oof_auc": 0.9454140641203886,
+      "fold_auc_std": 0.003184168125689831,
+      "best_iters": [
+        621,
+        536,
+        529,
+        447,
+        674
+      ],
+      "seconds": 213.8
+    },
+    {
+      "name": "B_regularized",
+      "hypothesis": "模型在过拟合噪声，加强正则能提升",
+      "params": {
+        "objective": "binary",
+        "metric": "auc",
+        "learning_rate": 0.05,
+        "num_leaves": 32,
+        "min_child_samples": 300,
+        "colsample_bytree": 0.6,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "reg_lambda": 5.0,
+        "n_estimators": 3000,
+        "n_jobs": -1,
+        "verbosity": -1,
+        "seed": 42
+      },
+      "early_stopping": 100,
+      "fold_auc": [
+        0.9448041634227644,
+        0.9483422520428261,
+        0.9513306027337258,
+        0.9469319395328014,
+        0.9419738220434735
+      ],
+      "oof_auc": 0.9466392286090616,
+      "fold_auc_std": 0.00316611672825786,
+      "best_iters": [
+        306,
+        397,
+        354,
+        349,
+        386
+      ],
+      "seconds": 86.5
+    },
+    {
+      "name": "C_weighted",
+      "hypothesis": "处理类不平衡能提升（预期几乎无效）",
+      "params": {
+        "objective": "binary",
+        "metric": "auc",
+        "learning_rate": 0.05,
+        "num_leaves": 64,
+        "min_child_samples": 100,
+        "colsample_bytree": 0.8,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "reg_lambda": 1.0,
+        "n_estimators": 3000,
+        "n_jobs": -1,
+        "verbosity": -1,
+        "seed": 42,
+        "scale_pos_weight": 59
+      },
+      "early_stopping": 100,
+      "fold_auc": [
+        0.9413737067579493,
+        0.9458692181235747,
+        0.9484055329063412,
+        0.9439110131484373,
+        0.9397573139422987
+      ],
+      "oof_auc": 0.94376389315339,
+      "fold_auc_std": 0.003089176584112325,
+      "best_iters": [
+        189,
+        224,
+        174,
+        186,
+        208
+      ],
+      "seconds": 65.2
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "model": "lgbm_baseline",
+  "params": {
+    "objective": "binary",
+    "metric": "auc",
+    "learning_rate": 0.05,
+    "num_leaves": 64,
+    "min_child_samples": 100,
+    "colsample_bytree": 0.8,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "reg_lambda": 1.0,
+    "n_estimators": 3000,
+    "n_jobs": -1,
+    "verbosity": -1,
+    "seed": 42
+  },
+  "n_splits": 5,
+  "seed": 42,
+  "n_features": 24,
+  "feature_names": [
+    "amount_usd",
+    "hours_since_last_txn",
+    "txn_count_last_24h",
+    "distance_from_home_km",
+    "card_age_months",
+    "customer_age",
+    "account_balance_usd",
+    "cvv_retry_count",
+    "velocity_score",
+    "time_of_day_hour",
+    "day_of_week",
+    "merchant_risk_score",
+    "prior_disputes",
+    "merchant_category",
+    "card_type",
+    "auth_method",
+    "channel",
+    "device_type",
+    "is_foreign_transaction",
+    "is_new_merchant",
+    "used_vpn",
+    "ip_country_mismatch",
+    "billing_shipping_mismatch",
+    "is_ai_generated_scam_attempt"
+  ],
+  "oof_auc": 0.9456498728095777,
+  "fold_auc": [
+    0.9434541778531462,
+    0.9471807253611393,
+    0.9505936569022321,
+    0.9458988917092847,
+    0.9413074216664254
+  ],
+  "fold_auc_mean": 0.9456869746984455,
+  "fold_auc_std": 0.003178603360703925,
+  "folds": [
+    {
+      "fold": 1,
+      "n_train": 559968,
+      "n_valid": 139992,
+      "best_iter": 238
+    },
+    {
+      "fold": 2,
+      "n_train": 559968,
+      "n_valid": 139992,
+      "best_iter": 255
+    },
+    {
+      "fold": 3,
+      "n_train": 559968,
+      "n_valid": 139992,
+      "best_iter": 300
+    },
+    {
+      "fold": 4,
+      "n_train": 559968,
+      "n_valid": 139992,
+      "best_iter": 183
+    },
+    {
+      "fold": 5,
+      "n_train": 559968,
+      "n_valid": 139992,
+      "best_iter": 234
+    }
+  ],
+  "best_iters": [
+    238,
+    255,
+    300,
+    183,
+    234
+  ],
+  "feature_importance": {
+    "merchant_risk_score": 1863.6,
+    "velocity_score": 1632.6,
+    "customer_age": 1379.0,
+    "amount_usd": 1259.6,
+    "hours_since_last_txn": 1242.8,
+    "account_balance_usd": 1100.2,
+    "distance_from_home_km": 1099.8,
+    "time_of_day_hour": 654.6,
+    "card_age_months": 646.6,
+    "merchant_category": 621.8,
+    "txn_count_last_24h": 422.6,
+    "day_of_week": 352.6,
+    "cvv_retry_count": 351.6,
+    "auth_method": 338.0,
+    "billing_shipping_mismatch": 323.8,
+    "is_new_merchant": 309.4,
+    "used_vpn": 275.0,
+    "device_type": 260.8,
+    "ip_country_mismatch": 254.4,
+    "is_foreign_transaction": 247.2,
+    "prior_disputes": 193.6,
+    "is_ai_generated_scam_attempt": 168.2,
+    "channel": 147.6,
+    "card_type": 100.6
+  },
+  "note": "早停使用验证折，OOF 可能略微乐观；后续做正式对比时改为固定轮数或内层验证。"
+}
